@@ -1,0 +1,29 @@
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Create CheckpointSaverHook.
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Restoring parameters from /tmp/tmpepi3wivy/model.ckpt-13806
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Saving checkpoints for 13806 into /tmp/tmpepi3wivy/model.ckpt.
+INFO:tensorflow:loss = 0.45697826, step = 13807
+INFO:tensorflow:global_step/sec: 0.315964
+INFO:tensorflow:loss = 0.16775271, step = 13907 (316.492 sec)
+INFO:tensorflow:Saving checkpoints for 13996 into /tmp/tmpepi3wivy/model.ckpt.
+INFO:tensorflow:global_step/sec: 0.315504
+INFO:tensorflow:loss = 0.2902359, step = 14007 (316.953 sec)
+INFO:tensorflow:Saving checkpoints for 14040 into /tmp/tmpepi3wivy/model.ckpt.
+INFO:tensorflow:Loss for final step: 0.12228401.
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Starting evaluation at 2019-02-06-01:08:18
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Restoring parameters from /tmp/tmpepi3wivy/model.ckpt-14040
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Finished evaluation at 2019-02-06-01:08:18
+INFO:tensorflow:Saving dict for global step 14040: accuracy = 0.9648, global_step = 14040, loss = 0.17113204
+INFO:tensorflow:Saving 'checkpoint_path' summary for global step 14040: /tmp/tmpepi3wivy/model.ckpt-14040
+Test accuracy after 60 epochs is: 0.965
+For delta=1e-5, the current epsilon is: 2.92
+
