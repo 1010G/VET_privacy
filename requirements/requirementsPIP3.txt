@@ -1,0 +1,6 @@
+scipy
+mpmath
+pandas
+numpy
+tensorflow
+tensorflow-gpu
