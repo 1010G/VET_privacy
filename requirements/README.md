@@ -1,11 +1,11 @@
-# VET_privacy
+# Installation des dépendances pour le projet
 ## Setup
-### Installation des dépendances pour le projet
+Ce script va installer toutes les dépendances nécessaire pour le projet (python3 libs et TensorFlow).
 ```bash
 ./installRequirements.sh
 ```
 
-## Dépendances
+## Dépendances
 - **Python :** 3.4, 3.5 ou 3.6
 - **Dépendances python :**
     - scipy >= 0.17
@@ -14,7 +14,7 @@
     - numpy
 
 
-### Installation Tensorflow
+## Installation Tensorflow
 ```bash
 # Current release for CPU-only
 $ pip install tensorflow
