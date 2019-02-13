@@ -44,13 +44,22 @@ def afficherDonnees(): #fonction temporaire pour afficher les data
     print("\n")
     print("\nXdata")
     print(Xdata)
+    print("\nXdata type")
+    print(type(Xdata))
     print("\nydata")
     print(ydata)
+    print("\nydata type")
+    print(type(ydata))
     print("\nydataSeries")
     print(series)
+    print("\nydataSeries type")
+    print(type(series))
     print("\n")
+    print(Xdata.info())
+    print("\n")
+    print(ydata.info())
 
-afficherDonnees() # a commenter / decommenter pour afficher les data
+#afficherDonnees() # a commenter / decommenter pour afficher les data
 
 ## Création de l'estimateur
 estimator = tf.estimator.LinearRegressor(feature_columns=feature_cols,model_dir="train")
@@ -58,11 +67,11 @@ estimator = tf.estimator.LinearRegressor(feature_columns=feature_cols,model_dir=
 ## Ajout de la data dans l'estimateur
 def get_input_fn( num_epochs=None, n_batch = 128, shuffle=True):
          return tf.estimator.inputs.pandas_input_fn(
-            x=Xdata,                       # feature data                                               semble OK
-            y=series,                      # label data                                                 IDK
-            batch_size=n_batch,            # batch 128 by default                                       OK
-            num_epochs=num_epochs,         # number of epoch                                            OK
-            shuffle=shuffle)               # shuffle or not, yes by default                             OK
+            x=Xdata,                                                           # feature data type: pandas.DataFrame
+            y=pd.Series(ydata["DispositionSoldAmount"]),                       # label data type pandas.Series
+            batch_size=n_batch,                                                # batch 128 by default
+            num_epochs=num_epochs,                                             # number of epoch
+            shuffle=shuffle)                                                   # shuffle or not, yes by default
 
 ## Execution du modéle
 estimator.train(input_fn=get_input_fn(num_epochs=None,n_batch = 128,shuffle=True),steps=1000)
