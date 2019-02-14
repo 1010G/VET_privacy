@@ -1,0 +1,30 @@
+# 100 steps
+average_loss: 25494072.0
+global_step: 100
+label/mean: 3631.5679
+loss: 3250494200.0
+prediction/mean: 1107.309
+
+# 1k steps
+average_loss: 23759204.0
+global_step: 1000
+label/mean: 3631.5674
+loss: 3029298400.0
+prediction/mean: 3061.9565
+
+
+## 10K steps
+average_loss: 19965764.0
+global_step: 10000
+label/mean: 3631.5676
+loss: 2545634800.0
+prediction/mean: 4045.612
+
+
+## 100k steps
+average_loss: 18845288.0
+global_step: 100000
+label/mean: 3631.5679
+loss: 2402774300.0
+prediction/mean: 3207.4106
+

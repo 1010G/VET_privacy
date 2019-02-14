@@ -36,7 +36,6 @@ LABELS = ["DispositionSoldAmount"] # y == predictions
 
 ## Convertions des types
 feature_cols = [tf.feature_column.numeric_column(k) for k in FEATURES]			# creation des feature_collumn PAS ENCORE DE DATA juste les labels
-series=pd.Series(ydata['DispositionSoldAmount'].values) # creation d'un type "pd.series" pour le "y" de l'input estimateur
 
 def afficherDonnees(): #fonction temporaire pour afficher les data
     print("\n   feature_cols")
@@ -50,11 +49,6 @@ def afficherDonnees(): #fonction temporaire pour afficher les data
     print(ydata)
     print("\nydata type")
     print(type(ydata))
-    print("\nydataSeries")
-    print(series)
-    print("\nydataSeries type")
-    print(type(series))
-    print("\n")
     print(Xdata.info())
     print("\n")
     print(ydata.info())
@@ -64,8 +58,8 @@ def afficherDonnees(): #fonction temporaire pour afficher les data
 ## Création de l'estimateur
 estimator = tf.estimator.LinearRegressor(feature_columns=feature_cols,model_dir="train")
 
-## Ajout de la data dans l'estimateur
-def get_input_fn( num_epochs=None, n_batch = 128, shuffle=True):
+## Ajout de la data dans l'estimateur pour le mode Train
+def get_input_fn_Train( num_epochs=None, n_batch = 128, shuffle=True):
          return tf.estimator.inputs.pandas_input_fn(
             x=Xdata,                                                           # feature data type: pandas.DataFrame
             y=pd.Series(ydata["DispositionSoldAmount"]),                       # label data type pandas.Series
@@ -73,5 +67,19 @@ def get_input_fn( num_epochs=None, n_batch = 128, shuffle=True):
             num_epochs=num_epochs,                                             # number of epoch
             shuffle=shuffle)                                                   # shuffle or not, yes by default
 
+## Ajout de la data dans l'estimateur pour le mode Eval
+def get_input_fn_Eval():
+    return tf.estimator.inputs.pandas_input_fn(
+       x=Xdata,                                                           # feature data type: pandas.DataFrame
+       y=pd.Series(ydata["DispositionSoldAmount"]),                       # label data type pandas.Series
+       shuffle=True)
+
+
 ## Execution du modéle
-estimator.train(input_fn=get_input_fn(num_epochs=None,n_batch = 128,shuffle=True),steps=1000)
+estimator.train(input_fn=get_input_fn_Train(num_epochs=None,n_batch = 128,shuffle=True),steps=1000000)                    # Entrainement du modéle
+result = estimator.evaluate(get_input_fn_Eval())                                                                          # Evaluation du modéle
+
+#tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
+
+for key,value in sorted(result.items()):
+  print('%s: %s' % (key, value))
